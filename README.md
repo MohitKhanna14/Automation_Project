@@ -1,0 +1,1 @@
+Created Automation project for starting Apache server on EC2 instance and archieving logs in S3 bucket
