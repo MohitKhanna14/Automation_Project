@@ -1,5 +1,6 @@
 #!/bin/bash
 bucket_name="upgrad-mohitk"
+name="mohit"
 mkdir tmp
 apt update -y
 dpkg -s apache2
@@ -25,7 +26,7 @@ service apache2 start
 fi
 timestamp=$(date '+%d%m%Y-%H%M%S')
 cd tmp
-filename="mohit-httpd-logs-$timestamp.tar"
+filename="$name-httpd-logs-$timestamp.tar"
 echo "$filename"
-tar -vcf "$filename" /var/log/apache2/access.log
+tar -vcf "$filename" /var/log/apache2/*.log
 aws s3 cp "$filename" s3://"$bucket_name"/"$filename"
